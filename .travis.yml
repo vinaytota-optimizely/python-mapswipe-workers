@@ -25,7 +25,7 @@ before_script:
   - if [ ! -f "$MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log" ]; then sudo touch $MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log; fi
   - sudo chown $USER:$USER $MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log
   - if [ ! -d "$MAPSWIPE_CONFIG_DIR" ]; then sudo mkdir -p $MAPSWIPE_CONFIG_DIR; fi
-  - sudo cp config/example-configuration.json $MAPSWIPE_CONFIG_DIR/configuration.json
+  - sudo cp config/ci-configuration.json $MAPSWIPE_CONFIG_DIR/configuration.json
   - sudo chown $USER:$USER $MAPSWIPE_CONFIG_DIR/configuration.json
 script:
   - cd tests
