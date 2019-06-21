@@ -8,6 +8,7 @@ env:
   MAPSWIPE_WORKER_LOG_DIR=/var/log/mapswipe_workers
   MAPSWIPE_WORKER_DATA_DIR=/var/lib/mapswipe
   MAPSWIPE_CONFIG_DIR=~/.config/mapswipe_workers
+  MAPSWIPE_DATA_DIR=/var/lib/mapswipe_workers/input_geometries
 before_install:
 # The version installed by default of libgdal is ancient
 # add the ubuntugis repo to update to a more recent version
@@ -27,6 +28,8 @@ before_script:
   - if [ ! -d "$MAPSWIPE_CONFIG_DIR" ]; then sudo mkdir -p $MAPSWIPE_CONFIG_DIR; fi
   - sudo cp config/ci-configuration.json $MAPSWIPE_CONFIG_DIR/configuration.json
   - sudo chown $USER:$USER $MAPSWIPE_CONFIG_DIR/configuration.json
+  - if [ ! -d "$MAPSWIPE_DATA_DIR" ]; then sudo mkdir -p $MAPSWIPE_DATA_DIR; fi
+  - sudo chown $USER:$USER $MAPSWIPE_DATA_DIR
 script:
   - cd tests
   - ./test_main.sh
