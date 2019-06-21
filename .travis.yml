@@ -5,6 +5,8 @@ python:
 env:
   CPLUS_INCLUDE_PATH=/usr/include/gdal
   C_INCLUDE_PATH=/usr/include/gdal
+  MAPSWIPE_WORKER_LOG_DIR=/var/log/mapswipe_workers/
+  MAPSWIPE_WORKER_DATA_DIR=/var/lib/mapswipe
 before_install:
 # The version installed by default of libgdal is ancient
 # add the ubuntugis repo to update to a more recent version
@@ -16,10 +18,11 @@ install:
   - pip install gdal==`gdal-config --version`
 # command to run tests
 before_script:
-  - if [ ! -d "/var/lib/mapswipe/" ]; then sudo  mkdir -p /var/lib/mapswipe/; fi
-  - sudo chown $USER:$USER /var/lib/mapswipe/
-  - if [ ! -f "/var/log/mapswipe_workers/mapswipe_workers.log" ]; then sudo touch /var/log/mapswipe_workers/mapswipe_workers.log; fi
-  - sudo chown $USER:$USER /var/log/mapswipe_workers/mapswipe_workers.log
+  - if [ ! -d "$MAPSWIPE_WORKER_DATA_DIR" ]; then sudo  mkdir -p $MAPSWIPE_WORKER_DATA_DIR; fi
+  - sudo chown $USER:$USER $MAPSWIPE_WORKER_DATA_DIR
+  - if [ ! -d "$MAPSWIPE_WORKER_LOG_DIR"]; then sudo mkdir -p $MAPSWIPE_WORKER_LOG_DIR; fi
+  - if [ ! -f "$MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log" ]; then sudo touch $MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log; fi
+  - sudo chown $USER:$USER $MAPSWIPE_WORKER_LOG_DIR/mapswipe_workers.log
 script:
   - cd tests
   - ./test_main.sh
