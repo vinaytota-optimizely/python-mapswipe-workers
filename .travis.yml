@@ -2,11 +2,14 @@ language: python
 python:
   - "3.6"
 # command to install dependencies
+env:
+  CPLUS_INCLUDE_PATH=/usr/include/gdal
+  C_INCLUDE_PATH=/usr/include/gdal
 before_install:
   - sudo apt-get install libgdal-dev
 install:
   - pip install -e .
-  - pip install -r test.txt
+  - pip install gdal==`gdal-config --version`
 # command to run tests
 script:
   - tests/test_main.sh
