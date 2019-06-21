@@ -16,9 +16,9 @@ install:
   - pip install gdal==`gdal-config --version`
 # command to run tests
 before_script:
-  - if [ ! -d "/var/lib/mapswipe/" ]; then mkdir -p /var/lib/mapswipe/
+  - if [ ! -d "/var/lib/mapswipe/" ]; then sudo  mkdir -p /var/lib/mapswipe/; fi
   - sudo chown $USER:$USER /var/lib/mapswipe/
-  - if [ ! -f "/var/log/mapswipe.log" ]; then touch /var/log/mapswipe.log
+  - if [ ! -f "/var/log/mapswipe.log" ]; then sudo touch /var/log/mapswipe.log; fi
   - sudo chown $USER:$USER /var/log/mapswipe.log
 script:
   - cd tests
