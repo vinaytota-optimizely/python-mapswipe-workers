@@ -5,8 +5,8 @@ python:
 before_install:
   - sudo apt-get install libgdal-dev
 install:
-  - pip install -r requirements.txt
+  - pip install -e .
   - pip install -r test.txt
 # command to run tests
 script:
-  - pytest
+  - tests/test_main.sh
