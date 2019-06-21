@@ -18,8 +18,8 @@ install:
 before_script:
   - if [ ! -d "/var/lib/mapswipe/" ]; then sudo  mkdir -p /var/lib/mapswipe/; fi
   - sudo chown $USER:$USER /var/lib/mapswipe/
-  - if [ ! -f "/var/log/mapswipe.log" ]; then sudo touch /var/log/mapswipe.log; fi
-  - sudo chown $USER:$USER /var/log/mapswipe.log
+  - if [ ! -f "/var/log/mapswipe_workers/mapswipe_workers.log" ]; then sudo touch /var/log/mapswipe_workers/mapswipe_workers.log; fi
+  - sudo chown $USER:$USER /var/log/mapswipe_workers/mapswipe_workers.log
 script:
   - cd tests
   - ./test_main.sh
