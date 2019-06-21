@@ -5,7 +5,7 @@ python:
 env:
   CPLUS_INCLUDE_PATH=/usr/include/gdal
   C_INCLUDE_PATH=/usr/include/gdal
-  MAPSWIPE_WORKER_LOG_DIR=/var/log/mapswipe_workers/
+  MAPSWIPE_WORKER_LOG_DIR=/var/log/mapswipe_workers
   MAPSWIPE_WORKER_DATA_DIR=/var/lib/mapswipe
 before_install:
 # The version installed by default of libgdal is ancient
