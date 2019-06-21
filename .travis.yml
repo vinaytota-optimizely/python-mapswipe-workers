@@ -17,4 +17,4 @@ install:
 # command to run tests
 script:
   - cd tests
-  - test_main.sh
+  - ./test_main.sh
