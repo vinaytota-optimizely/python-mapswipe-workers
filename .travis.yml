@@ -2,10 +2,6 @@ dist: xenial
 language: python
 python:
   - "3.6"
-# command to install dependencies
-env:
-  CPLUS_INCLUDE_PATH=/usr/include/gdal
-  C_INCLUDE_PATH=/usr/include/gdal
 before_install:
 # The version installed by default of libgdal is ancient
 # add the ubuntugis repo to update to a more recent version
@@ -17,4 +13,5 @@ install:
   - pip install gdal==`gdal-config --version`
 # command to run tests
 script:
-  - tests/test_main.sh
+  - cd tests
+  - test_main.sh
