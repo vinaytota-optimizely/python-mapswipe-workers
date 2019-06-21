@@ -7,6 +7,10 @@ env:
   CPLUS_INCLUDE_PATH=/usr/include/gdal
   C_INCLUDE_PATH=/usr/include/gdal
 before_install:
+# The version installed by default of libgdal is ancient
+# add the ubuntugis repo to update to a more recent version
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+  - sudo apt-get update -q
   - sudo apt-get install libgdal-dev
 install:
   - pip install -e .
